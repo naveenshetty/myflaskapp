@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2, h3 {
+            color: #555;
+            font-weight: normal;
+        }
+
+        .info-section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h2 {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .info-section h2 span {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .student-info div {
+            font-size: 16px;
+        }
+
+        .student-info .name-id {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            table, th, td {
+                display: block;
+                width: 100%;
+            }
+            th {
+                text-align: left;
+            }
+            td {
+                border: none;
+                padding-left: 50%;
+                position: relative;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                top: 12px;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Exam Results</h1>
+
+    <div class="info-section">
+        <h2>Approved Credits: <span>{{ approved_credits }}</span></h2>
+        <h2>Average Grade: <span>{{ average_grade }}</span></h2>
+    </div>
+
+    <div class="student-info">
+        <div class="name-id">
+            <strong>Student ID:</strong> {{ studentweb_data[0].id }}<br>
+            <strong>Student Name:</strong> {{ studentweb_data[0].name }}
+        </div>
+    </div>
+
+    <h3>Course Data:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Grade</th>
+                <th>Credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in studentweb_data %}
+            <tr>
+                <td>{{ student.course }}</td>
+                <td>{{ student.grade }}</td>
+                <td>{{ student.credits }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
