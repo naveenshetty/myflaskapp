@@ -9,4 +9,4 @@ app = Flask(__name__)
 load_dotenv()
 
 # from my_flask_app.app import routes
-# from app import routes  # Import routes after initializing the app
+from app import routes  # Import routes after initializing the app
