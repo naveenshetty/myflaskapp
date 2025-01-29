@@ -2,7 +2,7 @@
 set -e
 
 # Pull the Docker image from Docker Hub
-echo
+docker pull naveen192/myflaskapp:tagname
 
 # Run the Docker image as a container
-echo
+docker run -d -p 8080:8080 naveen192/myflaskapp:tagname
